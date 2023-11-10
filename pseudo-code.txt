@@ -1,0 +1,144 @@
+Questions:
+-------------------------------------------------------------------------------
+	-	What are the components of a textfile in programming context?
+		A:	In the context of programming, a text file is a file format used for 
+			storing plain text data. It contains human-readable characters and is 
+			typically used for representing documents, configuration files, source 
+			code, and other types of textual information. The key components of a 
+			text file include:
+
+			1. 	Characters: Text files consist of a sequence of characters. These 
+				characters can be letters, numbers, punctuation, whitespace, and 
+				special characters.
+
+			2. 	Lines: Text files are often organized into lines. A line is a 
+				sequence of characters that ends with a newline character 
+				(`'\n'` in Unix-like systems) or a carriage return and newline pair
+				(`'\r\n'` in Windows). Each line is considered a separate unit of 
+				information.
+
+			3. 	Newline Characters: Newline characters (`'\n'` or `'\r\n'`) are used
+				to mark the end of a line in a text file. They are crucial for defining 
+				the structure of the file.
+
+			4. 	Encoding: The encoding specifies how characters are represented as 
+				binary data. Common encodings include ASCII, UTF-8, and UTF-16. The
+				choice of encoding is essential for correctly interpreting the characters
+				in the file.
+
+			5. 	File Extension: Text files often have file extensions like `.txt`, 
+				`.c`, `.java`, etc. These extensions can provide information about 
+				the type or purpose of the file and are used by both humans and applications
+				to identify file types.
+
+			6. 	End-of-File (EOF): An EOF marker indicates the end of the file. In 
+				some systems, this is achieved by a special character 
+				(e.g., `Ctrl-D` on Unix-like systems), while in others, it's determined
+				by the file size.
+
+			7. 	Escape Characters: 
+				\n: Newline character. It represents the end of a line and starts a new line.
+				\t: Tab character. It inserts a horizontal tab.
+				\r: Carriage return. It returns the cursor to the beginning of the line.
+				\": Double quote. It represents the character " within a string enclosed in 
+					double quotes.
+				\': Single quote. It represents the character ' within a string enclosed in 
+					single quotes.
+				\\: Backslash. It represents the character \ within a string.
+
+	- 	What does a line read means?
+		A:	A "line read" typically refers to reading a sequence of characters from
+			a file or input stream until a newline character is encountered.
+
+	- 	What are file descriptors and how they work?
+		A:	In Unix-like operating systems, including Linux, a file descriptor 
+			is an abstract indicator (usually an integer) that represents an open 
+			file or input/output resource, such as a file, a pipe, or a network socket. 
+			File descriptors are used by the operating system to keep track of opened 
+			files and manage input/output operations.
+
+			Here are some key points about file descriptors:
+
+			1.	Integer Identifiers: File descriptors are represented as non-negative
+				integers. Standard input (stdin), standard output (stdout), and standard
+				error (stderr) typically have file descriptors 0, 1, and 2, respectively.
+
+			2.	File Table: The operating system maintains a file table that keeps track 
+				of open files and their associated file descriptors. Each process has 
+				its own file table.
+
+			3.	Input/Output Operations: File descriptors are used to perform 
+				input/output operations on files. Functions like read() and write() 
+				take a file descriptor as an argument.
+
+			4.	Three Standard Descriptors: In a C program, file descriptors 0, 1, 
+				and 2 are associated with the standard input, standard output, and 
+				standard error streams, respectively. These descriptors are automatically 
+				opened when a program starts.
+
+			5.	File Descriptor Duplication: The dup() system call is used to duplicate 
+				a file descriptor. This can be useful for redirecting input or output.
+
+			6.	Closing File Descriptors: The close() system call is used to close 
+				a file descriptor. This is important to free up resources and prevent
+				resource leaks.
+
+	- 	What indicates the end of file?
+		A:	In the context of file input/output, the end of a file is indicated 
+			by reaching the end-of-file (EOF) marker. The EOF marker is a special 
+			condition that signifies there is no more data to be read from a file. 
+			In many programming languages and systems, including C, the EOF condition 
+			is often represented by a constant value.
+
+			In C, the standard library defines a constant EOF (usually -1) to indicate 
+			the end of a file or an error condition during input operations. When 
+			you read from a file using functions like getchar() or fgetc(), they 
+			return the value of the next character in the file or EOF if there 
+			are no more characters to read or if an error occurs.
+
+	- 	What are the file descriptors to read from the standard input & from a file?
+		A:	In Unix-like operating systems, file descriptors are small integers 
+			associated with open files. The standard input (stdin), 
+			standard output (stdout), and standard error (stderr) are typically 
+			associated with file descriptors 0, 1, and 2, respectively. When you 
+			open a file, the operating system assigns it a unique file descriptor.
+
+	-	What does read() does?
+		A:	The read() function is a system call in Unix-like operating systems, 
+		including Linux. It is used to read data from an open file descriptor, 
+		which could be a regular file, a device, a pipe, or other types of file-like 
+		entities. The read() function attempts to read up to count bytes from the 
+		file or input device associated with the file descriptor fd into the buffer 
+		pointed to by buf. It returns the number of bytes read, which can be less 
+		than count if the end of the file is reached or if an error occurs.
+
+	-	How does read() remembers the position of the previous call?
+		A:	When you read from a file descriptor, the operating system keeps track 
+			of the current position within the file or input stream. This is known 
+			as the file offset.
+
+			Each file descriptor has its own file offset. When you read data using 
+			read(), the file offset is automatically incremented by the number of bytes 
+			read. This means that the next read() operation will start reading from 
+			the position immediately after the data that was just read.
+
+			This mechanism allows you to sequentially read through a file or input 
+			stream. The file offset is a property associated with the file descriptor, 
+			and it is managed by the operating system. When you open a file, the file 
+			offset is typically set to the beginning of the file, and it changes as 
+			you perform read or write operations.
+
+			If you need to set the file offset to a specific position in the file, 
+			you can use the lseek() function. It allows you to move the file offset 
+			to a specified location within the file.
+
+Algorithm:
+-------------------------------------------------------------------------------
+ver 1.0.0
+{
+	buffer
+
+	from left to right:
+		while buffer != '\n':
+		read(fd, buffer, 1)
+}
