@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:50:20 by we                #+#    #+#             */
-/*   Updated: 2023/11/14 13:52:30 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/11/14 15:15:18 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stddef.h>
 # include <stdio.h>
 
-# define BUFFER_SIZE 1024
+# define BUFFER_SIZE 1
 
 char	*get_next_line(int fd);
 
