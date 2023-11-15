@@ -1,9 +1,10 @@
-BONUS=$1
+MANDATORY=$(find . -type f -not -name "*_bonus*" -not -name "*main*")
+BONUS=$(find . -type f -not -name "*main*")
 
-if [ "$BONUS" = "b" ]; then
-	norminette -R CheckDefine *.h | grep "_bonus"
-	norminette *.c | grep "_bonus"
+if [ "$1" = "b" ]; then
+	echo "${BONUS}" | grep "\.h" | xargs norminette -R CheckDefine
+	echo "${BONUS}" | grep "\.c" | xargs norminette
 else
-	norminette -R CheckDefine *.h | grep -v "_bonus"
-	norminette *.c | grep -v "_bonus"
+	echo "${MANDATORY}" | grep "\.h" | xargs norminette -R CheckDefine
+	echo "${MANDATORY}" | grep "\.c" | xargs norminette
 fi
