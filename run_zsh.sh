@@ -10,10 +10,8 @@ elif [ "$COMPILE" -eq -1 ]; then
 	rm -f executable
 fi
 
-if [ "$MEMCHECK" = "M" ]; then
-	valgrind --tool=memcheck ./executable
-elif [ "$MEMCHECK" = "v" ]; then
-	valgrind ./executable
+if [ "$MEMCHECK" = "1" ]; then
+	leaks -atExit -- ./executable
 elif [ "$MEMCHECK" = 0 ]; then
 	./executable
 fi
