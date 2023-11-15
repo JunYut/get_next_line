@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:50:20 by we                #+#    #+#             */
-/*   Updated: 2023/11/15 14:49:34 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/11/15 15:41:36 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ char	*get_next_line(int fd);
 
 int		check_newline(char *line);
 void	append_node(t_lines *lines);
+void	fill_line(t_lines *lines, int fd);
 
 #endif
