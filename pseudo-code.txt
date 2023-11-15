@@ -132,6 +132,13 @@ Questions:
 			you can use the lseek() function. It allows you to move the file offset 
 			to a specified location within the file.
 
+Conditions:
+-------------------------------------------------------------------------------
+	-	If BUFFER_SIZE is greater than line length:
+		A:	need to handle manually
+	-	If BUFFER_SIZE is greater than whole file:
+		A:	read() will handle this case
+
 Algorithm:
 -------------------------------------------------------------------------------
 ver 1.0.0
