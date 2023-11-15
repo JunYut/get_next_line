@@ -5,5 +5,5 @@ if [ "$BONUS" = "b" ]; then
 	norminette *.c | grep "_bonus"
 else
 	norminette -R CheckDefine *.h | grep -v "_bonus"
-	norminette *.c | grep -v "_bonus" | grep -v "main"
+	norminette *.c | grep -v "_bonus"
 fi
