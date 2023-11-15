@@ -149,3 +149,43 @@ ver 1.0.0
 		while buffer != '\n':
 		read(fd, buffer, 1)
 }
+
+ver 2.0.0
+{
+	lines_list
+	---------------------------------------------------------------------------
+	from TEXT_FILE read(lines_list, BUFFER_SIZE)
+	lines_list:
+		- 	not a full line
+		- 	a full line
+		-	exceeds a full line
+	if a full line:
+		return lines_list
+	if not a full line:
+		create new node for lines_list
+		go back: TEXT_FILE read(lines_list, BUFFER_SIZE)
+	if exceeds a full line:
+		return string until '\n'
+}
+
+<loop model 1>
+{
+	while(no_newline)
+	{
+		if (Error)
+			return NULL
+	}
+	return line
+}
+
+<loop model 2>
+{
+	while(not EOF)
+	{
+		if (have new line)
+			return line
+	}
+	if (EOF)
+		return line
+	return NULL
+}
