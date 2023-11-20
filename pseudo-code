@@ -1,0 +1,75 @@
+conditions:
+-------------------------------------------------------------------------------
+BUFFER_SIZE < line:
+	- 	Loop and append to buffer until encountering a newline character ('\n') or 
+		reaching the end of the file.
+	-	If a newline is found, return the line (including the newline character).
+	-	If the end of the file is reached, return the entire remaining content as 
+		the last line.
+
+		{
+			buffer_size = BUFFER_SIZE
+			buffer[BUFFER_SIZE + 1];
+			line;
+
+			while no '\n' in buffer:
+				free buffer;
+				buffer_size += BUFFER_SIZE;
+				malloc buffer: buffer_size + 1;
+				read FILE;
+			line = buffer until '\n';
+			return line;
+		}
+
+BUFFER_SIZE == line:
+	-	Return the buffer as is.
+
+	{
+		buffer[BUFFER_SIZE + 1];
+
+		read FILE;
+		return buffer;
+	}
+
+BUFFER_SIZE > line:
+	-	Return the buffer until the newline character ('\n') is encountered or 
+		the end of the file is reached.
+	-	If a newline is found, return the line (including the newline character).
+	-	If the end of the file is reached, return the entire remaining content 
+		as the last line.
+
+	{
+		buffer[BUFFER_SIZE + 1];
+		line;
+
+		read FILE;
+		line = buffer until '\n'
+		return line;
+	}
+
+-------------------------------------------------------------------------------
+prototype:
+-------------------------------------------------------------------------------
+	{
+		buffer_size = BUFFER_SIZE
+		buffer[BUFFER_SIZE + 1];
+		line;
+		while no '\n' in buffer:
+			line = buffer;
+			free buffer;
+			buffer_size += BUFFER_SIZE;
+			malloc buffer: buffer_size + 1;
+			append buffer: line;
+			free line;
+			read FILE, buffer pos starts after existing string;
+		line = buffer until '\n';
+		return line;
+	}
+-------------------------------------------------------------------------------
+functions:
+-------------------------------------------------------------------------------
+char* get_next_line(fd);
+int	newline_pos(char* str);
+char* ft_strdup(char* org);
+void ft_strlcat(char* dest, char* src, size_t size);
+char* extract_line(char* buffer);

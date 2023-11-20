@@ -6,11 +6,11 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:30:22 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/11/16 15:47:17 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/11/20 08:44:08 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef
+#ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
 # include <unistd.h>
