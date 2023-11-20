@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:46:33 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/11/20 14:34:26 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/11/20 16:03:37 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*get_next_line(int fd)
 		buffer_size += BUFFER_SIZE;
 		if ((buffer = (char *)malloc(buffer_size + 1)) == NULL)
 			return (NULL);
-		ft_strlcat(buffer, line, sizeof(buffer));
+		ft_strlcat(buffer, line, buffer_size + 1);
 		free(line);
 		if ((bytes_read += read(fd, buffer + bytes_read, BUFFER_SIZE)) == -1)
 			return (NULL);

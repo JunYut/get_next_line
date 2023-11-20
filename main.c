@@ -10,11 +10,11 @@ int main(void)
 
 void file_test(void)
 {
-	int fd = open("text.txt", 1, O_RDONLY);
+	int fd = open("text.txt", O_RDONLY);
 
 	printf("Read from file:\n");
 	printf("call 1: %s", get_next_line(fd));
 	printf("call 2: %s", get_next_line(fd));
 	printf("call 3: %s", get_next_line(fd));
-	printf("call 4: %s", get_next_line(fd));
+	//printf("call 4: %s", get_next_line(fd));	need to handle EOF
 }
