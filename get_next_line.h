@@ -6,11 +6,11 @@
 /*   By: we <we@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:30:22 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/11/29 12:40:19 by we               ###   ########.fr       */
+/*   Updated: 2023/11/29 12:42:14 by we               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef
+#ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
 # include <unistd.h>
