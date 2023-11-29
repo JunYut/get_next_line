@@ -1,0 +1,17 @@
+if BUFFER_SIZE > line:
+	create new_string using '\n' as delimiter
+	return new_string
+if BUFFER_SIZE == line:
+	return line
+if BUFFER_SIZE < line:
+	store line in buffer
+	delete old_memory_block
+	create new_memory_block with doubled size
+	put line in buffer into new new_memory_block
+	append newly read line into the new_memory_block
+	if '\n' in new_memory_block
+		create new_string using '\n' as delimiter
+		delete new_memory_block
+		return new_string
+	else:
+		loop()
