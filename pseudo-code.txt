@@ -1,0 +1,13 @@
+BUFFER_SIZE > line:
+	from buffer extract line
+
+BUFFER_SIZE == line:
+	return buffer
+
+BUFFER_SIZE < line:
+	while not a line:
+		read -> temp
+		strjoin(buffer, temp)
+	from buffer extract line
+
+
