@@ -15,3 +15,4 @@ if BUFFER_SIZE < line:
 		return new_string
 	else:
 		loop()
+if 	BUFFER_SIZE	> file:
