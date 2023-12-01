@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 13:01:24 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/12/01 11:17:01 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/12/01 11:31:36 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 char	*get_next_line(int fd);
 
-char	*ft_strjoin(char *str1, const char *str2);
+char	*ft_strjoin(char **str1, const char *str2);
 char	*ft_memmove(char *dest, const char *src, int src_len);
 int		ft_strlen(const char *str);
 
