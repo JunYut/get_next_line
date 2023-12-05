@@ -2,10 +2,12 @@
 #include <fcntl.h>
 
 void file_test(void);
+void stdin_test(void);
 
 int main(void)
 {
-	file_test();
+	//file_test();
+	stdin_test();
 }
 
 void file_test(void)
@@ -24,5 +26,14 @@ void file_test(void)
 	free(line);
 	// printf("\n_____________________________________");
 	printf("call 4: %s", line = get_next_line(fd));
+	free(line);
+}
+
+void stdin_test(void)
+{
+	char* line;
+
+	printf("Read from stdin:\n");
+	printf("call 1: %s", line = get_next_line(0));
 	free(line);
 }
