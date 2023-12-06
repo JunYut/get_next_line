@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: we <we@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:46:33 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/12/05 17:42:49 by we               ###   ########.fr       */
+/*   Updated: 2023/12/06 10:40:20 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ char	*get_next_line(int fd)
 	is_eof = read_line(fd, &buffer);
 	line = put_line(buffer, is_eof);
 	buffer = remove_line(&buffer);
-	if (is_eof == 0)
-		free(buffer);
+	// if (is_eof == 0)
+	// 	free(buffer);
 	return (line);
 }
 

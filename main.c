@@ -6,7 +6,7 @@ void stdin_test(void);
 
 int main(void)
 {
-	//file_test();
+	file_test();
 	stdin_test();
 }
 
