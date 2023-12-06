@@ -6,13 +6,13 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:46:33 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/12/06 10:40:20 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/12/06 10:58:35 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int 	is_line(const char *str);
+static int	is_line(const char *str);
 static char	*put_line(const char *buffer, int is_eof);
 static int	read_line(int fd, char **buffer);
 static char	*remove_line(char **buffer);
@@ -32,8 +32,6 @@ char	*get_next_line(int fd)
 	is_eof = read_line(fd, &buffer);
 	line = put_line(buffer, is_eof);
 	buffer = remove_line(&buffer);
-	// if (is_eof == 0)
-	// 	free(buffer);
 	return (line);
 }
 
@@ -74,7 +72,7 @@ static char	*put_line(const char *buffer, int is_eof)
 	return (line);
 }
 
-static int read_line(int fd, char **buffer)
+static int	read_line(int fd, char **buffer)
 {
 	char	*temp;
 	int		bytes_read;

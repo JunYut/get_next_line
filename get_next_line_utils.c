@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 13:01:31 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/12/01 14:21:47 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/12/06 10:56:52 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_memmove(char *dest, const char *src, int src_len)
 	return (dest);
 }
 
-int		ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
 	int	len;
 
