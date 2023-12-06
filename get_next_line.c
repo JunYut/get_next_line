@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:46:33 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/12/06 10:58:35 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:10:06 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ char	*get_next_line(int fd)
 	is_eof = read_line(fd, &buffer);
 	line = put_line(buffer, is_eof);
 	buffer = remove_line(&buffer);
+	if (is_eof == 0)
+	{
+		free(buffer);
+		buffer = NULL;
+	}
 	return (line);
 }
 

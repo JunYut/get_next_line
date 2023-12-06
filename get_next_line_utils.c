@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 13:01:31 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/12/06 10:56:52 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:08:07 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ char	*ft_strjoin(char **str1, const char *str2)
 	int		total_size;
 
 	if (*str1 == NULL)
-		if ((*str1 = (char *)malloc(1)) == NULL)
+	{
+		*str1 = (char *)malloc(1);
+		if (*str1 == NULL)
 			return (NULL);
+	}
 	total_size = ft_strlen(*str1) + ft_strlen(str2);
-	if ((new_str = (char *)malloc(total_size + 1)) == NULL)
+	new_str = (char *)malloc(total_size + 1);
+	if (new_str == NULL)
 		return (NULL);
 	ft_memmove(new_str, *str1, ft_strlen(*str1));
 	ft_memmove(new_str + ft_strlen(*str1), str2, ft_strlen(str2) + 1);
