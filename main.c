@@ -7,12 +7,12 @@ void stdin_test(void);
 int main(void)
 {
 	file_test();
-	stdin_test();
+	//stdin_test();
 }
 
 void file_test(void)
 {
-	int fd = open("text.txt", O_RDONLY);
+	int fd = open("gnlTester/files/41_no_nl", O_RDONLY);
 	char* line;
 
 	printf("Read from file:\n");

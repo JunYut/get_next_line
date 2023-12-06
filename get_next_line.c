@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:46:33 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/12/06 11:56:10 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/12/06 15:59:07 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			is_eof;
 
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &buffer, 0) < 0)
+		return (NULL);
 	if (buffer == NULL)
 	{
 		buffer = (char *)malloc(1);
