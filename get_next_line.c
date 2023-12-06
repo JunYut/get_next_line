@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:46:33 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/12/06 11:22:48 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:56:10 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,27 @@ static int	is_line(const char *str)
 static char	*put_line(const char *buffer, int is_eof)
 {
 	char	*line;
+	char	delimiter;
 	int		i;
 
-	i = -1;
 	if (is_eof != 0)
 	{
-		if ((line = (char *)malloc(is_line(buffer) + 2)) == NULL)
-			return (NULL);
-		while (buffer[++i] != '\n')
-			line[i] = buffer[i];
-		line[i] = '\n';
-		line[i + 1] = 0;
+		delimiter = '\n';
+		line = (char *)malloc(is_line(buffer) + 2);
 	}
 	else
 	{
-		if ((line = (char *)malloc(ft_strlen(buffer) + 1)) == NULL)
-			return (NULL);
-		while (buffer[++i] != 0)
-			line[i] = buffer[i];
-		line[i] = 0;
+		delimiter = 0;
+		line = (char *)malloc(ft_strlen(buffer) + 1);
 	}
+	if (line == NULL)
+		return (NULL);
+	i = -1;
+	while (buffer[++i] != delimiter)
+		line[i] = buffer[i];
+	line[i] = delimiter;
+	if (is_eof != 0)
+		line[i + 1] = 0;
 	return (line);
 }
 
@@ -89,7 +90,7 @@ static int	read_line(int fd, char **buffer)
 		temp = (char *)malloc(BUFFER_SIZE + 1);
 		if (temp == NULL)
 			return (-1);
-		bytes_read = read(fd, tempk, BUFFER_SIZE);
+		bytes_read = read(fd, temp, BUFFER_SIZE);
 		if (bytes_read == -1)
 			return (bytes_read);
 		if (bytes_read != BUFFER_SIZE)
