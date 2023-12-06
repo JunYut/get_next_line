@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:46:33 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/12/06 11:10:06 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:22:48 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	*get_next_line(int fd)
 
 	if (buffer == NULL)
 	{
-		if ((buffer = (char *)malloc(1)) == NULL)
+		buffer = (char *)malloc(1);
+		if (buffer == NULL)
 			return (NULL);
 		*buffer = 0;
 	}
@@ -85,9 +86,11 @@ static int	read_line(int fd, char **buffer)
 	bytes_read = 404;
 	while (is_line(*buffer) == -1 && bytes_read != 0)
 	{
-		if ((temp = (char *)malloc(BUFFER_SIZE + 1)) == NULL)
+		temp = (char *)malloc(BUFFER_SIZE + 1);
+		if (temp == NULL)
 			return (-1);
-		if ((bytes_read = read(fd, temp, BUFFER_SIZE)) == -1)
+		bytes_read = read(fd, tempk, BUFFER_SIZE);
+		if (bytes_read == -1)
 			return (bytes_read);
 		if (bytes_read != BUFFER_SIZE)
 			temp[bytes_read] = 0;
@@ -106,7 +109,8 @@ static char	*remove_line(char **buffer)
 	int		j;
 
 	i = is_line(*buffer) + 1;
-	if ((next_line = (char *)malloc(ft_strlen(*buffer + i) + 1)) == NULL)
+	next_line = (char *)malloc(ft_strlen(*buffer + i) + 1);
+	if (next_line == NULL)
 		return (NULL);
 	j = -1;
 	while (*(*buffer + i) != 0)
