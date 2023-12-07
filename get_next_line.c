@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:46:33 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/12/07 09:58:19 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/12/07 13:20:46 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,29 @@ static char	*remove_line(char **buffer);
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[1024];
 	char		*line;
 	int			is_eof;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &buffer, 0) < 0)
 		return (NULL);
-	if (buffer == NULL)
+	if (buffer[fd] == NULL)
 	{
-		buffer = (char *)malloc(1);
-		*buffer = 0;
+		buffer[fd] = (char *)malloc(1);
+		*(buffer[fd]) = 0;
 	}
-	is_eof = read_line(fd, &buffer);
-	line = put_line(buffer, is_eof);
-	buffer = remove_line(&buffer);
+	is_eof = read_line(fd, &buffer[fd]);
+	line = put_line(buffer[fd], is_eof);
+	buffer[fd] = remove_line(&buffer[fd]);
 	if (is_eof == 0)
 	{
-		if (*buffer == 0)
+		if (*buffer[fd] == 0)
 		{
 			free(line);
 			line = NULL;
 		}	
-		free(buffer);
-		buffer = NULL;
+		free(buffer[fd]);
+		buffer[fd] = NULL;
 	}
 	return (line);
 }

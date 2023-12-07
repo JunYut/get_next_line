@@ -6,16 +6,17 @@ void stdin_test(void);
 
 int main(void)
 {
-	int fd = open("../text.txt", O_RDONLY);
-	printf("From text.txt: %s", get_next_line(fd));
+	int fd = open("../gnlTester/files/multiple_line_no_nl", O_RDONLY);
+	printf("From multiple_line_no_nl: %s", get_next_line(fd));
 	fd  = open("../gnlTester/files/43_with_nl", O_RDONLY);
 	printf("From 43_with_nl: %s", get_next_line(fd));
-	fd = open("../text.txt", O_RDONLY);
-	printf("From text.txt again: %s", get_next_line(fd));
+	fd = open("../gnlTester/files/multiple_line_no_nl", O_RDONLY);
+	printf("From multiple_line_no_nl again: %s", get_next_line(fd));
 	fd  = open("../gnlTester/files/43_with_nl", O_RDONLY);
 	printf("From 43_with_nl again: %s", get_next_line(fd));
-	fd = open("../text.txt", O_RDONLY);
-	printf("From text.txt again: %s", get_next_line(fd));
+	fd = open("../gnlTester/files/multiple_line_no_nl", O_RDONLY);
+	printf("From multiple_line_no_nl again: %s", get_next_line(fd));
+	printf("From multiple_line_no_nl again: %s", get_next_line(fd));
 }
 
 void file_test(void)
