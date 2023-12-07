@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:46:33 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/12/06 15:59:07 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2023/12/07 09:35:27 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,16 @@ char	*get_next_line(int fd)
 		*buffer = 0;
 	}
 	is_eof = read_line(fd, &buffer);
+	printf("is_eof: %d\n", is_eof);
 	line = put_line(buffer, is_eof);
 	buffer = remove_line(&buffer);
 	if (is_eof == 0)
 	{
+		if (*buffer == 0)
+		{
+			free(line);
+			line = NULL;
+		}	
 		free(buffer);
 		buffer = NULL;
 	}
@@ -86,7 +92,7 @@ static int	read_line(int fd, char **buffer)
 	char	*temp;
 	int		bytes_read;
 
-	bytes_read = 404;
+	bytes_read = 69420;
 	while (is_line(*buffer) == -1 && bytes_read != 0)
 	{
 		temp = (char *)malloc(BUFFER_SIZE + 1);
