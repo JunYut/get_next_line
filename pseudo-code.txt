@@ -9,5 +9,3 @@ BUFFER_SIZE < line:
 		read -> temp
 		strjoin(buffer, temp)
 	from buffer extract line
-
-

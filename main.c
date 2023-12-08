@@ -23,4 +23,6 @@ int main(void)
 	printf("test1	:%s", line = get_next_line(fd1));
 	free(line);
 
+  close(fd1);
+  close(fd2);
 }
