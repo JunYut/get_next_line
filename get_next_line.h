@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 11:50:20 by we                #+#    #+#             */
-/*   Updated: 2023/11/15 15:41:36 by tjun-yu          ###   ########.fr       */
+/*   Created: 2023/11/30 13:01:24 by tjun-yu           #+#    #+#             */
+/*   Updated: 2023/12/01 11:31:36 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,16 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stddef.h>
 # include <stdio.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
 
-typedef struct s_lines
-{
-	char			*line;
-	struct s_lines	*next;
-}	t_lines;
-
 char	*get_next_line(int fd);
 
-int		check_newline(char *line);
-void	append_node(t_lines *lines);
-void	fill_line(t_lines *lines, int fd);
+char	*ft_strjoin(char **str1, const char *str2);
+char	*ft_memmove(char *dest, const char *src, int src_len);
+int		ft_strlen(const char *str);
 
 #endif

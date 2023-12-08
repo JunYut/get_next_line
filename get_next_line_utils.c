@@ -5,42 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjun-yu <tanjunyu8888@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 13:21:41 by tjun-yu           #+#    #+#             */
-/*   Updated: 2023/11/15 15:40:49 by tjun-yu          ###   ########.fr       */
+/*   Created: 2023/11/30 13:01:31 by tjun-yu           #+#    #+#             */
+/*   Updated: 2023/12/06 11:08:07 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	check_newline(char *line)
+char	*ft_strjoin(char **str1, const char *str2)
 {
-	int	position;
-	
-	position = -1;
-	while (line[++position] != 0)
-		if (line[position] == '\n')
-			return (position);
-	return (-1);
+	char	*new_str;
+	int		total_size;
+
+	if (*str1 == NULL)
+	{
+		*str1 = (char *)malloc(1);
+		if (*str1 == NULL)
+			return (NULL);
+	}
+	total_size = ft_strlen(*str1) + ft_strlen(str2);
+	new_str = (char *)malloc(total_size + 1);
+	if (new_str == NULL)
+		return (NULL);
+	ft_memmove(new_str, *str1, ft_strlen(*str1));
+	ft_memmove(new_str + ft_strlen(*str1), str2, ft_strlen(str2) + 1);
+	free(*str1);
+	return (new_str);
 }
 
-void	append_node(t_lines *lines)
+char	*ft_memmove(char *dest, const char *src, int src_len)
 {
-	t_lines	*new;
-	t_lines	*current;
+	int	i;
 
-	new = (t_lines *)malloc(sizeof(t_lines));
-	if (new == NULL)
-		return ;
-	new->line = NULL;
-	new->next = NULL;
-	current = lines;
-	while (current->next != NULL)
-		current = current->next;
-	current->next = new;
+	i = -1;
+	if (src < dest)
+		while (--src_len >= 0)
+			dest[src_len] = src[src_len];
+	else
+		while (++i < src_len)
+			dest[i] = src[i];
+	return (dest);
 }
 
-void	fill_line(t_lines *lines, int fd)
+int	ft_strlen(const char *str)
 {
-	lines->line = (char *)malloc(BUFFER_SIZE + 1);
-	read(fd, lines->line, BUFFER_SIZE);
+	int	len;
+
+	len = 0;
+	while (str[len] != 0)
+		++len;
+	return (len);
 }
